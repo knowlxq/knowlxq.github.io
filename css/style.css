@@ -566,6 +566,8 @@ article footer .tags {
 #cover #title {
   font-family: "Georgia";
   font-style: italic;
+  font-size: 30px;
+  font-weight: bold;
 }
 #cover #subtitle {
   font-weight: bold;
