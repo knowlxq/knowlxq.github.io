@@ -497,6 +497,7 @@ article footer .tags {
   -moz-background-size: cover;
   background-size: cover;
 }
+#subtitle{font-family:Arial;font-weight: bold;}
 #cover #profile {
   padding-top: 60px;
 }
