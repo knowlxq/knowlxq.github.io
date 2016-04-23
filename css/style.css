@@ -5,7 +5,7 @@
 body {
   background: #fff;
   color: #444;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif, "Georgia";
   font-size: 14px;
   text-shadow: 0 0 1px transparent;
 }
@@ -20,7 +20,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif, Nueva Std, "Georgia";
 }
 h1 {
   font-size: 1.8em;
@@ -117,7 +117,7 @@ p {
 #header #main-nav {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif, Nueva Std, "Georgia";
   line-height: 2.5em;
 }
 #header #main-nav.top_mode {
@@ -259,7 +259,7 @@ article header .icon:before {
 }
 article header time {
   color: #777;
-  font: 0.9em "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em "Lato", Helvetica Neue, Helvetica, Arial, sans-serif, Nueva Std, "Georgia";
   margin-bottom: 5px;
   display: block;
   line-height: 1;
@@ -324,7 +324,7 @@ article .entry blockquote footer cite:before {
 }
 article .entry code,
 article .entry pre {
-  font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+  font-family: Monaco, Menlo, Consolas, Courier New, monospace, "Georgia";
 }
 article .entry code {
   background: #eee;
@@ -469,7 +469,7 @@ article footer .tags {
   padding: 5px 10px;
   background: #ddd;
   color: #777;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif, Nueva Std, "Georgia";
   text-shadow: 0 0 1px #fff;
   margin: 10px 0;
 }
@@ -497,7 +497,6 @@ article footer .tags {
   -moz-background-size: cover;
   background-size: cover;
 }
-#subtitle{font-family:Arial;font-weight: bold;}
 #cover #profile {
   padding-top: 60px;
 }
@@ -563,6 +562,12 @@ article footer .tags {
   font-style: normal;
   line-height: 30px;
   margin: 0;
+}
+#cover #title {
+  font-family: "Georgia";
+}
+#cover #subtitle {
+  font-weight: bold;
 }
 .archive-title {
   color: #777;
@@ -635,7 +640,7 @@ article footer .tags {
 }
 #sidebar .search input {
   background: #fff;
-  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif, Nueva Std, "Georgia";
   font-style: italic;
   font-size: 1em;
   padding: 10px 15px;
@@ -683,7 +688,7 @@ article footer .tags {
 #footer {
   color: #777;
   margin-bottom: 50px;
-  font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif, Nueva Std, "Georgia";
   text-shadow: 0 0 1px #fff;
   margin-top: 10px;
   text-align: center;
@@ -719,7 +724,7 @@ article footer .tags {
 }
 .entry .gist .gist-file .gist-data pre {
   padding: 0 !important;
-  font-family: Monaco, Menlo, Consolas, Courier New, monospace;
+  font-family: Monaco, Menlo, Consolas, Courier New, monospace, "Georgia";
 }
 .entry .gist .gist-file .gist-meta {
   background: none;
