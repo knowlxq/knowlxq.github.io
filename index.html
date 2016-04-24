@@ -101,6 +101,74 @@
   <div class="post-content">
     <header>
       
+      <time datetime="2016-04-24T09:44:35.000Z"><a href="/2016/04/24/关于margin-top失效的原因及解决办法/">周日, 4月 24 2016, 5:44:35 下午</a></time>
+
+  
+    <h1 class="title"><a href="/2016/04/24/关于margin-top失效的原因及解决办法/">关于margin-top失效的原因及解决办法</a></h1>
+  
+
+
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>当两个空的块级元素嵌套时，如果内部的块设置有margin-top值，而父元素没有下述所说的特征，那么内部的块元素设置的margin-top值会绑架父元素（即把margin-top值作用在父元素）；</p>
+<p><img src="http://i2.piimg.com/42b74930c9f7ca48.png" alt=""></p>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><ol>
+<li>设置父元素或自身的<code>display:inline-block</code>;(在IE6,7下不识别inline-block,不过这样可以触发块级元素，只需要在后面再加上<code>*display:inline</code>就可以了)</li>
+<li>设置父元素的border（只要大于零就可以）</li>
+<li>设置父元素<code>padding:1px;</code>(只要参数大于零就可以)</li>
+<li>给父元素设置<code>overflow:hidden;</code></li>
+<li>给父元素或者子元素设置<code>position:absolute;</code>(让其脱离文档流)</li>
+<li>给父元素或者子元素设置浮动（原理与5类似）</li>
+<li>让父元素有内容非空</li>
+</ol>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="http://i2.piimg.com/4bdede1de20acd01.png" alt=""></p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2016/04/24/关于margin-top失效的原因及解决办法/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://knowlxq.github.io/2016/04/24/关于margin-top失效的原因及解决办法/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2016/04/24/关于margin-top失效的原因及解决办法/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
       <time datetime="2016-04-23T05:27:38.000Z"><a href="/2016/04/23/利用hexo和github建立个人博客-适合小白/">周六, 4月 23 2016, 1:27:38 下午</a></time>
 
   
