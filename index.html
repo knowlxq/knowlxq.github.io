@@ -101,6 +101,70 @@
   <div class="post-content">
     <header>
       
+      <time datetime="2016-05-01T03:46:06.000Z"><a href="/2016/05/01/display-inline-block的边距问题/">周日, 5月 1 2016, 11:46:06 中午</a></time>
+
+  
+    <h1 class="title"><a href="/2016/05/01/display-inline-block的边距问题/">display:inline-block的边距问题</a></h1>
+  
+
+
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>当一个元素设置了 <code>display:inline-block;</code>的时候，若它的高度小于20px的话，就会产生一个上边距</p>
+<p><img src="http://i2.piimg.com/60ca334b3c1145f4.png" alt=""></p>
+<p>如上图，元素我设置的高度是14px,所以它会产生一个上边距来自动填补，而元素之间的边距是由于空白符引起的</p>
+<p>解决方法：给包裹他们的父元素设置<code>font-size:0</code>，就可以解决这两个问题了</p>
+<p>效果</p>
+<p><img src="http://i2.piimg.com/617e955dbd9fb9bf.png" alt=""></p>
+<p>还有一个值得一提的是，当同级的元素都设置了<code>display:inline-block</code>时，而它们的高度不一样，默认会垂直居中对齐</p>
+<p><img src="http://i2.piimg.com/35436e1fdb677fc9.png" alt=""></p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2016/05/01/display-inline-block的边距问题/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://knowlxq.github.io/2016/05/01/display-inline-block的边距问题/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2016/05/01/display-inline-block的边距问题/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
       <time datetime="2016-04-24T09:44:35.000Z"><a href="/2016/04/24/关于margin-top失效的原因及解决办法/">周日, 4月 24 2016, 5:44:35 下午</a></time>
 
   
