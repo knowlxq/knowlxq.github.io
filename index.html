@@ -101,6 +101,73 @@
   <div class="post-content">
     <header>
       
+      <time datetime="2016-05-02T08:15:44.000Z"><a href="/2016/05/02/自由变量、作用域与作用域链/">周一, 5月 2 2016, 4:15:44 下午</a></time>
+
+  
+    <h1 class="title"><a href="/2016/05/02/自由变量、作用域与作用域链/">自由变量、作用域与作用域链</a></h1>
+  
+
+
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先，理解什么是自由变量</p>
+<ul>
+<li>在A作用域中使用变量c,而在A中又没有声明变量c(即在c是在其他的作用域中声明的)，这个时候的c变量就称为自由变量。<img src="http://images.cnitblog.com/blog/138012/201409/251447094515754.png" alt=""></li>
+</ul>
+<p>对于自由变量，它是怎样进行取值的呢？</p>
+<p>​              答案就是，要到创建这个函数的作用域去取值–注意是<strong>创建</strong>而不是<strong>调用</strong>。</p>
+<p><img src="http://images.cnitblog.com/blog/138012/201409/251447377485132.png" alt=""></p>
+<p>上面的描述是跨了一步作用域进行取值，如果跨了一步找不到，那就接着继续跨，直到跨到全局作用域—-这样的路线，称之为<strong>作用域链</strong></p>
+<p>要明确一点的就是，只有自由变量才需要通过作用域链去取值，那如果变量不是自由变量呢？</p>
+<p><img src="http://i2.piimg.com/813aa4e42e87d16b.png" alt=""></p>
+<p>当运行到14行的时候，函数调用运行，注意函数中的a不是自由变量了，因为参数a 就相当于声明可一个局部变量，而且，函数在调用的时候没有传递参数，所以第一个alert的时候在本作用域找到了a结果是<code>undefined</code>,接下来11行改变局部变量a的值为2(注意这个时候改变的都是局部变量的a,全局变量的a并不会影响到)，14行fn1函数调用结束后垃圾回收机制就会销毁函数中的局部变量a,到15行时alert的结果是全局变量a的值了。</p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2016/05/02/自由变量、作用域与作用域链/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://knowlxq.github.io/2016/05/02/自由变量、作用域与作用域链/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2016/05/02/自由变量、作用域与作用域链/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
       <time datetime="2016-05-02T05:19:06.000Z"><a href="/2016/05/02/关于浏览器对JavaScript代码的‘预解析’与逐行解读代码/">周一, 5月 2 2016, 1:19:06 下午</a></time>
 
   
@@ -128,6 +195,7 @@
 <h3 id="2-逐行解读代码"><a href="#2-逐行解读代码" class="headerlink" title="2.逐行解读代码"></a>2.逐行解读代码</h3><p>​      遇到表达式时可以修改预解析的值，比如<code>var a=1</code>,在预解析的时候a是undefined,到解读代码是就会变成值为1。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(a);					<span class="comment">// function a ()&#123; alert(4); &#125;</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">alert(a);					<span class="comment">// 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123; alert(<span class="number">2</span>); &#125;</span><br><span class="line">alert(a);					<span class="comment">// 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123; alert(<span class="number">4</span>); &#125;</span><br><span class="line">alert(a);					<span class="comment">// 3</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;		</span><br><span class="line">alert(a);					<span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 <p>在上面的代码中 ，进行预解析的最后结果只留下<code>function a (){ alert(4);</code> ，所以在一开始的alert（a）弹出的是function a (){ alert(4);然后在接下来的逐行解读代码中，每遇到表达式就改变了a的值。</p>
+<p><strong>函数也是一个域，所以在函数调用运行时也会进行“预解析”</strong></p>
 
       
     </div>
