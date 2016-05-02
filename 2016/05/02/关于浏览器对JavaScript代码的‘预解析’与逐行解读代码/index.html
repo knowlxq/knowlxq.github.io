@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>display:inline-block的边距问题 | I have a dream</title>
+  <title>关于浏览器对JavaScript代码的‘预解析’与逐行解读代码 | I have a dream</title>
   <meta name="author" content="晓晓笑小姐">
   
-  <meta name="description" content="当一个元素设置了 display:inline-block;的时候，若它的高度小于20px的话，就会产生一个上边距
+  <meta name="description" content="浏览器对JavaScript代码的解析至少可以分为2部分
+1.预解析首先把JavaScript代码中的定义的变量和函数找出来
 
-如上图，元素我设置的高度是14px,所以它会产生一个上边距来自动填补，而元素之间的边距是由于空白符引起的
-解决方法：给包裹他们的父元素设置font-size:0，就可以解决这两个问题">
+[ ] var a=1
+对所有的变量，在正式运行代码之前，都提前赋一个值：undefiend(未定义)
+
+[ ] fn1 = function fn1(){ alert(2">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="display:inline-block的边距问题"/>
+  <meta property="og:title" content="关于浏览器对JavaScript代码的‘预解析’与逐行解读代码"/>
   <meta property="og:site_name" content="I have a dream"/>
 
   
@@ -74,10 +77,10 @@
   <div class="post-content">
     <header>
       
-      <time datetime="2016-05-01T03:46:06.000Z"><a href="/2016/05/01/display-inline-block的边距问题/">周日, 5月 1 2016, 11:46:06 中午</a></time>
+      <time datetime="2016-05-02T05:19:06.000Z"><a href="/2016/05/02/关于浏览器对JavaScript代码的‘预解析’与逐行解读代码/">周一, 5月 2 2016, 1:19:06 下午</a></time>
 
   
-    <h1 class="title">display:inline-block的边距问题</h1>
+    <h1 class="title">关于浏览器对JavaScript代码的‘预解析’与逐行解读代码</h1>
   
 
 
@@ -87,14 +90,20 @@
     </header>
     <div class="entry">
       
-        <p>当一个元素设置了 <code>display:inline-block;</code>的时候，若它的高度小于20px的话，就会产生一个上边距</p>
-<p><img src="http://i2.piimg.com/60ca334b3c1145f4.png" alt=""></p>
-<p>如上图，元素我设置的高度是14px,所以它会产生一个上边距来自动填补，而元素之间的边距是由于空白符引起的</p>
-<p>解决方法：给包裹他们的父元素设置<code>font-size:0</code>，就可以解决这两个问题了</p>
-<p>效果</p>
-<p><img src="http://i2.piimg.com/617e955dbd9fb9bf.png" alt=""></p>
-<p>还有一个值得一提的是，当同级的元素都设置了<code>display:inline-block</code>时，而它们的高度不一样，默认会垂直居中对齐</p>
-<p><img src="http://i2.piimg.com/35436e1fdb677fc9.png" alt=""></p>
+        <p>浏览器对JavaScript代码的解析至少可以分为2部分</p>
+<h3 id="1-预解析"><a href="#1-预解析" class="headerlink" title="1.预解析"></a>1.预解析</h3><p>首先把JavaScript代码中的定义的变量和函数找出来</p>
+<ul>
+<li><p>[ ] var a=1</p>
+<pre><code>对所有的变量，在正式运行代码之前，都提前赋一个值：undefiend(未定义)
+</code></pre></li>
+<li><p>[ ] fn1 = function fn1(){ alert(2); }</p>
+<pre><code>所有的函数，在正式运行代码之前，都是一个函数块
+</code></pre></li>
+</ul>
+<p>在预解析中，如果遇到重名的，只留下一个    如果变量和函数同名，就留下函数</p>
+<h3 id="2-逐行解读代码"><a href="#2-逐行解读代码" class="headerlink" title="2.逐行解读代码"></a>2.逐行解读代码</h3><p>​      遇到表达式时可以修改预解析的值，比如<code>var a=1</code>,在预解析的时候a是undefined,到解读代码是就会变成值为1。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alert(a);					<span class="comment">// function a ()&#123; alert(4); &#125;</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">alert(a);					<span class="comment">// 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123; alert(<span class="number">2</span>); &#125;</span><br><span class="line">alert(a);					<span class="comment">// 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>)</span>&#123; alert(<span class="number">4</span>); &#125;</span><br><span class="line">alert(a);					<span class="comment">// 3</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">3</span>;		</span><br><span class="line">alert(a);					<span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>在上面的代码中 ，进行预解析的最后结果只留下<code>function a (){ alert(4);</code> ，所以在一开始的alert（a）弹出的是function a (){ alert(4);然后在接下来的逐行解读代码中，每遇到表达式就改变了a的值。</p>
 
       
     </div>
@@ -119,10 +128,8 @@
           <div class="clearfix"></div>
           <nav id="pagination">
   
-    <a href="/2016/05/02/关于浏览器对JavaScript代码的‘预解析’与逐行解读代码/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
   
-  
-    <a href="/2016/04/24/关于margin-top失效的原因及解决办法/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+    <a href="/2016/05/01/display-inline-block的边距问题/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
   
   <div class="clearfix"></div>
 </nav>
@@ -138,7 +145,7 @@
 
   
       <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2016/05/01/display-inline-block的边距问题/"></div>
+<div class="ds-thread" data-thread-key="/2016/05/02/关于浏览器对JavaScript代码的‘预解析’与逐行解读代码/"></div>
 <!-- Duoshuo Comment END -->
   
 </section>
