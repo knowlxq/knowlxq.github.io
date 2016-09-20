@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>自由变量、作用域与作用域链 | I have a dream</title>
+  <title>css实现文字在左，图片在右 | I have a dream</title>
   <meta name="author" content="晓晓笑小姐">
   
-  <meta name="description" content="首先，理解什么是自由变量
+  <meta name="description" content="1.文字包裹图片首先应该把&amp;lt;img&amp;gt; 标签写在 &amp;lt;p&amp;gt;标签的前面，然后给&amp;lt;img&amp;gt;标签设置浮动float属性.
 
-在A作用域中使用变量c,而在A中又没有声明变量c(即在c是在其他的作用域中声明的)，这个时候的c变量就称为自由变量。
+代码
 
-对于自由变量，它是怎样进行取值的呢？
-​              答案就是，要到创建这个函数的作用域去取值–注意是创建而不是调用。
 
-上面的描述是跨了">
+
+效果
+
+
+2.文字浮动在左，图片在右有时候我们并不想让图片包裹文字，而是想让文字区域有一个固定的区域然后放置在图片的左端，这个时候，只需在">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="自由变量、作用域与作用域链"/>
+  <meta property="og:title" content="css实现文字在左，图片在右"/>
   <meta property="og:site_name" content="I have a dream"/>
 
   
@@ -78,10 +80,10 @@
   <div class="post-content">
     <header>
       
-      <time datetime="2016-05-02T08:15:44.000Z"><a href="/2016/05/02/自由变量、作用域与作用域链/">周一, 5月 2 2016, 4:15:44 下午</a></time>
+      <time datetime="2016-05-12T02:26:50.000Z"><a href="/2016/05/12/css实现文字在左，图片在右/">周四, 5月 12 2016, 10:26:50 上午</a></time>
 
   
-    <h1 class="title">自由变量、作用域与作用域链</h1>
+    <h1 class="title">css实现文字在左，图片在右</h1>
   
 
 
@@ -91,17 +93,29 @@
     </header>
     <div class="entry">
       
-        <p>首先，理解什么是自由变量</p>
+        <h3 id="1-文字包裹图片"><a href="#1-文字包裹图片" class="headerlink" title="1.文字包裹图片"></a>1.文字包裹图片</h3><p>首先应该把<code>&lt;img&gt;</code> 标签写在 <code>&lt;p&gt;</code>标签的前面，然后给<code>&lt;img&gt;</code>标签设置浮动<code>float</code>属性.</p>
 <ul>
-<li>在A作用域中使用变量c,而在A中又没有声明变量c(即在c是在其他的作用域中声明的)，这个时候的c变量就称为自由变量。<img src="http://images.cnitblog.com/blog/138012/201409/251447094515754.png" alt=""></li>
+<li>代码</li>
 </ul>
-<p>对于自由变量，它是怎样进行取值的呢？</p>
-<p>​              答案就是，要到创建这个函数的作用域去取值–注意是<strong>创建</strong>而不是<strong>调用</strong>。</p>
-<p><img src="http://images.cnitblog.com/blog/138012/201409/251447377485132.png" alt=""></p>
-<p>上面的描述是跨了一步作用域进行取值，如果跨了一步找不到，那就接着继续跨，直到跨到全局作用域—-这样的路线，称之为<strong>作用域链</strong></p>
-<p>要明确一点的就是，只有自由变量才需要通过作用域链去取值，那如果变量不是自由变量呢？</p>
-<p><img src="http://i2.piimg.com/813aa4e42e87d16b.png" alt=""></p>
-<p>当运行到14行的时候，函数调用运行，注意函数中的a不是自由变量了，因为参数a 就相当于声明可一个局部变量，而且，函数在调用的时候没有传递参数，所以第一个alert的时候在本作用域找到了a结果是<code>undefined</code>,接下来11行改变局部变量a的值为2(注意这个时候改变的都是局部变量的a,全局变量的a并不会影响到)，14行fn1函数调用结束后垃圾回收机制就会销毁函数中的局部变量a,到15行时alert的结果是全局变量a的值了。</p>
+<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-5-12/59245361.jpg" alt=""></p>
+<ul>
+<li>效果</li>
+</ul>
+<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-5-12/88760021.jpg" alt=""></p>
+<h3 id="2-文字浮动在左，图片在右"><a href="#2-文字浮动在左，图片在右" class="headerlink" title="2.文字浮动在左，图片在右"></a>2.文字浮动在左，图片在右</h3><p>有时候我们并不想让图片包裹文字，而是想让文字区域有一个固定的区域然后放置在图片的左端，这个时候，只需在上面代码的前提下再给<code>&lt;p&gt;</code>标签加上宽度以及浮动属性</p>
+<ul>
+<li>代码</li>
+</ul>
+<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-5-12/99838708.jpg" alt=""></p>
+<ul>
+<li>效果</li>
+</ul>
+<p><img src="http://i4.buimg.com/0a3659190ddd2786.png" alt=""></p>
+<p>还有一个问题需要注意一下，就是当有一连串不间断的字母时，它不会自动折行</p>
+<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-5-12/73977154.jpg" alt=""></p>
+<p>解决方法</p>
+<p>给<code>&lt;p&gt;</code>加上属性<code>word-break:break-all;</code></p>
+<p><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-5-12/79916806.jpg" alt=""></p>
 
       
     </div>
@@ -126,10 +140,8 @@
           <div class="clearfix"></div>
           <nav id="pagination">
   
-    <a href="/2016/05/12/css实现文字在左，图片在右/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
   
-  
-    <a href="/2016/05/02/关于浏览器对JavaScript代码的‘预解析’与逐行解读代码/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+    <a href="/2016/05/02/自由变量、作用域与作用域链/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
   
   <div class="clearfix"></div>
 </nav>
@@ -145,7 +157,7 @@
 
   
       <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2016/05/02/自由变量、作用域与作用域链/"></div>
+<div class="ds-thread" data-thread-key="/2016/05/12/css实现文字在左，图片在右/"></div>
 <!-- Duoshuo Comment END -->
   
 </section>
